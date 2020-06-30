@@ -1,5 +1,6 @@
 import {
   RECEIVE_QUESTIONS,
+  ADD_QUESTION,
   ADD_QUESTION_ANSWER,
   REMOVE_QUESTION_ANSWER,
 } from '../actions/questions';
@@ -34,6 +35,11 @@ export default function questions(state = {}, action) {
             ),
           },
         },
+      };
+    case ADD_QUESTION:
+      return {
+        ...state,
+        [action.question.id]: action.question,
       };
     default:
       return state;

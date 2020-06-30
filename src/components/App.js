@@ -6,6 +6,7 @@ import { Box, CSSReset, ThemeProvider, Flex } from '@chakra-ui/core';
 import Dashboard from './Dashboard';
 import Login from './Login';
 import Question from './Question';
+import NewQuestion from './NewQuestion';
 import Nav from './Nav';
 import InvalidPage from './InvalidPage';
 
@@ -34,6 +35,7 @@ class App extends Component {
               <Switch>
                 <Route path="/" exact component={Dashboard} />
                 <Route path="/questions/:qid" component={Question} />
+                <Route path="/add" exact component={NewQuestion} />
                 <Route component={InvalidPage} />
               </Switch>
             )}
