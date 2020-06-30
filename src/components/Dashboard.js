@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Flex } from '@chakra-ui/core';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/core';
 
 class Dashboard extends Component {
   render() {
