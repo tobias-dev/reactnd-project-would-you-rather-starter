@@ -20,9 +20,8 @@ class QuestionForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { question } = this.props;
+    const { question, dispatch } = this.props;
     const { selectedOption } = this.state;
-    const { dispatch } = this.props;
 
     dispatch(handleAddQuestionAnswer(question, selectedOption));
 
