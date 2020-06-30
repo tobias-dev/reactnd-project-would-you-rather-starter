@@ -7,7 +7,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
 } from '@chakra-ui/core';
-import { getQuestionStats } from '../utils/helper';
+import { getQuestionStats } from '../utils/helpers';
 
 class QuestionStats extends Component {
   render() {

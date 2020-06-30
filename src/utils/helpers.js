@@ -20,3 +20,22 @@ export function getQuestionStats(question, uid) {
     userAnswer: optionOne.votes.includes(uid) ? 'optionOne' : 'optionTwo',
   };
 }
+
+export function getUserStats(user, questions) {
+  const { id, name, avatarURL } = user;
+  let answered = 0;
+  let created = 0;
+  Object.keys(questions).forEach((qid) => {
+    const { author, optionOne, optionTwo } = questions[qid];
+    author === id && created++;
+    [...optionOne.votes, ...optionTwo.votes].includes(id) && answered++;
+  });
+  return {
+    id,
+    name,
+    avatarURL,
+    answered,
+    created,
+    score: answered + created,
+  };
+}

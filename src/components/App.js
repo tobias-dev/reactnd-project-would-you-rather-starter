@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 import Login from './Login';
 import Question from './Question';
 import NewQuestion from './NewQuestion';
+import LeaderBoard from './LeaderBoard';
 import Nav from './Nav';
 import InvalidPage from './InvalidPage';
 
@@ -36,8 +37,9 @@ class App extends Component {
             ) : (
               <Switch>
                 <Route path="/" exact component={Dashboard} />
-                <Route path="/questions/:qid" component={Question} />
+                <Route path="/questions/:qid" exact component={Question} />
                 <Route path="/add" exact component={NewQuestion} />
+                <Route path="/leaderboard" exact component={LeaderBoard} />
                 <Route component={InvalidPage} />
               </Switch>
             )}
