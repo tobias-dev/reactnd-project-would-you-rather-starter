@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import {
   Flex,
   Box,
@@ -10,7 +11,6 @@ import {
   Avatar,
 } from '@chakra-ui/core';
 import { unsetUser } from '../actions/authedUser';
-import { FaSignOutAlt } from 'react-icons/fa';
 
 class Nav extends Component {
   handleLogout = (e) => {
@@ -30,32 +30,36 @@ class Nav extends Component {
       >
         <Flex flex="50%">
           <Breadcrumb separator="" padding="0">
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={NavLink} to="/">
+                Home
+              </BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">New Question</BreadcrumbLink>
+              <BreadcrumbLink as={NavLink} to="/add">
+                New Question
+              </BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">Leader Board</BreadcrumbLink>
+              <BreadcrumbLink as={NavLink} to="/leaderboard">
+                Leader Board
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
         </Flex>
         {user && (
           <Flex flex="50%" textAlign="right">
-            <Box width="80%">
+            <Box width="85%">
               Hallo, {user.name}{' '}
               <Avatar size="xs" name={user.name} src={user.avatarURL} />
             </Box>
             <PseudoBox
-              width="20%"
+              width="15%"
               _hover={{ textDecoration: 'underline', cursor: 'pointer' }}
             >
-              <span onClick={this.handleLogout}>
-                Logout <Box as={FaSignOutAlt} display="inline-block" />
-              </span>
+              <span onClick={this.handleLogout}>Logout</span>
             </PseudoBox>
           </Flex>
         )}

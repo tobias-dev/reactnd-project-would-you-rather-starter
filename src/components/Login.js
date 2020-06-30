@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Box, Select } from '@chakra-ui/core';
 import { FaUserCircle } from 'react-icons/fa';
@@ -9,16 +10,18 @@ class Login extends Component {
     const selectedUser = e.target.value;
     const { dispatch } = this.props;
 
-    if (selectedUser.length > 0) {
-      dispatch(setUser(selectedUser));
-    }
+    selectedUser.length > 0 && dispatch(setUser(selectedUser));
   };
 
   render() {
-    const { users } = this.props;
+    const { authedUser, users } = this.props;
+
+    if (authedUser !== null) {
+      return <Redirect to="/" />;
+    }
 
     return (
-      <Box width="50%" margin="0 auto" border="solid 1px #ccc" rounded="7px">
+      <Box width="100%" rounded="7px">
         <Box
           textAlign="center"
           backgroundColor="#F7FAFC"
@@ -29,18 +32,17 @@ class Login extends Component {
           Please sign in to continue
         </Box>
         <Box padding="2em 0 0">
-          <Box as={FaUserCircle} margin="0 auto" size="4em" color="#4682b4" />
+          <Box as={FaUserCircle} margin="0 auto" size="4em" color="#63b3ed" />
         </Box>
         <Box padding="1em 2em 2em">
           Sign in
-          <Select
-            placeholder="Who are you?"
-            ref={(selectedUser) => (this.selectedUser = selectedUser)}
-            onChange={this.handleSelectUser}
-          >
-            {Object.keys(users).map((userId) => (
-              <option key={userId} value={userId}>
-                {users[userId].name}
+          <Select value="" onChange={this.handleSelectUser}>
+            <option value="" disabled={true}>
+              Who are you?
+            </option>
+            {Object.keys(users).map((uid) => (
+              <option key={uid} value={uid}>
+                {users[uid].name}
               </option>
             ))}
           </Select>

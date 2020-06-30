@@ -1,64 +1,56 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PollPreview from './PollPreview';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/core';
+import Question from './Question';
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Flex } from '@chakra-ui/core';
 
 class Dashboard extends Component {
   render() {
-    const { answeredQuestionIds, unansweredQuestionIds } = this.props;
-
     return (
-      <Tabs
-        isFitted={true}
-        variant="soft-rounded"
-        width="50%"
-        margin="0 auto"
-        border="solid 1px #ccc"
-        padding="1em"
-        rounded="7px"
-      >
+      <Tabs isFitted={true} width="100%" variant="soft-rounded">
         <TabList>
           <Tab>Unanswered Questions</Tab>
           <Tab>Answered Questions</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel>
-            <ul>
-              {unansweredQuestionIds.length > 0
-                ? unansweredQuestionIds.map((id) => (
-                    <PollPreview key={id} id={id} />
+          {['unansweredIds', 'answeredIds'].map((key) => (
+            <TabPanel key={key} marginTop="0.5em">
+              {this.props[key].length > 0
+                ? this.props[key].map((qid) => (
+                    <Flex
+                      key={qid}
+                      border="solid 1px #ccc"
+                      rounded="7px"
+                      padding="0.5em"
+                      marginTop="0.5em"
+                    >
+                      <Question key={qid} qid={qid} isPreview={true} />
+                    </Flex>
                   ))
-                : 'You have answered all current questions.'}
-            </ul>
-          </TabPanel>
-          <TabPanel>
-            <ul>
-              {answeredQuestionIds.length > 0
-                ? answeredQuestionIds.map((id) => (
-                    <PollPreview key={id} id={id} />
-                  ))
-                : "You don't have any questions answered yet."}
-            </ul>
-          </TabPanel>
+                : 'There is currently no question left.'}
+            </TabPanel>
+          ))}
         </TabPanels>
       </Tabs>
     );
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
-  const unansweredQuestionIds = [];
-  const answeredQuestionIds = [];
+function mapStateToProps({ authedUser, questions }) {
+  const answeredIds = [];
+  const unansweredIds = [];
   Object.keys(questions)
     .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-    .forEach((id) => {
-      Object.keys(users[authedUser].answers).includes(id)
-        ? answeredQuestionIds.push(id)
-        : unansweredQuestionIds.push(id);
+    .forEach((qid) => {
+      [
+        ...questions[qid].optionOne.votes,
+        ...questions[qid].optionTwo.votes,
+      ].includes(authedUser)
+        ? answeredIds.push(qid)
+        : unansweredIds.push(qid);
     });
   return {
-    answeredQuestionIds,
-    unansweredQuestionIds,
+    answeredIds,
+    unansweredIds,
   };
 }
 
