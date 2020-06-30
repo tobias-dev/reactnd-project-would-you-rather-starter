@@ -58,6 +58,10 @@ code {
   margin-top: 0.5em;
 }
 
+.invalid-container {
+  text-align: center;
+}
+
 .invalid-container svg {
   width: 3em;
   height: 3em;

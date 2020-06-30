@@ -52,6 +52,7 @@ function mapStateToProps({ authedUser, questions, users }, props) {
       ].includes(authedUser),
     };
   }
+  return {};
 }
 
 export default connect(mapStateToProps)(Question);
