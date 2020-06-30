@@ -35,7 +35,6 @@ class NewQuestion extends Component {
   };
 
   render() {
-    const { authedUser } = this.props;
     const { optionOne, optionTwo, hasBeenSubmitted } = this.state;
 
     if (hasBeenSubmitted === true) {
@@ -85,10 +84,4 @@ class NewQuestion extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  return {
-    authedUser,
-  };
-}
-
-export default connect(mapStateToProps)(NewQuestion);
+export default connect()(NewQuestion);

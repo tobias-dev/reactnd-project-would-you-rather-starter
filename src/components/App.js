@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import { Box, CSSReset, ThemeProvider, Flex } from '@chakra-ui/core';
+import LoadingBar from 'react-redux-loading';
 import Dashboard from './Dashboard';
 import Login from './Login';
 import Question from './Question';
@@ -20,6 +21,7 @@ class App extends Component {
         <CSSReset />
         <Box maxWidth="1000px" margin="0 auto">
           <CSSReset />
+          <LoadingBar />
           <Nav />
           <Flex
             width="50%"

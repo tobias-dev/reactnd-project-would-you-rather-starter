@@ -1,3 +1,4 @@
+import { showLoading, hideLoading } from 'react-redux-loading';
 import { saveQuestion, saveQuestionAnswer } from '../utils/api';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
@@ -21,12 +22,16 @@ function addQuestion(question) {
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
+    dispatch(showLoading());
     const { authedUser } = getState();
+
     return saveQuestion({
       optionOneText: optionOneText,
       optionTwoText: optionTwoText,
       author: authedUser,
-    }).then((question) => dispatch(addQuestion(question)));
+    })
+      .then((question) => dispatch(addQuestion(question)))
+      .then(() => dispatch(hideLoading()));
   };
 }
 
