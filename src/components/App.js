@@ -20,18 +20,11 @@ class App extends Component {
     return (
       <ThemeProvider>
         <CSSReset />
-        <Box maxWidth="1000px" margin="0 auto">
+        <Box className="main">
           <CSSReset />
           <LoadingBar />
           <Nav />
-          <Flex
-            width="50%"
-            margin="0 auto"
-            border="solid 1px #ccc"
-            rounded="7px"
-            marginTop="1em"
-            padding="0.5em"
-          >
+          <Flex className="container">
             {this.props.authedUser === null ? (
               <Route path="/" component={Login} />
             ) : (

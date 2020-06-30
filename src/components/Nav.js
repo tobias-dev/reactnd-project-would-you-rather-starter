@@ -22,13 +22,8 @@ class Nav extends Component {
     const { user } = this.props;
 
     return (
-      <Flex
-        padding="1em 0 0.5em"
-        marginBottom="2em"
-        color="dimgrey"
-        borderBottom="solid 1px #E2E8F0"
-      >
-        <Flex flex="50%">
+      <Flex className="nav-container">
+        <Flex className="menu">
           <Breadcrumb separator="" padding="0">
             <BreadcrumbItem>
               <BreadcrumbLink as={NavLink} to="/">
@@ -50,15 +45,12 @@ class Nav extends Component {
           </Breadcrumb>
         </Flex>
         {user && (
-          <Flex flex="50%" textAlign="right">
-            <Box width="85%">
+          <Flex className="user">
+            <Box>
               Hallo, {user.name}{' '}
               <Avatar size="xs" name={user.name} src={user.avatarURL} />
             </Box>
-            <PseudoBox
-              width="15%"
-              _hover={{ textDecoration: 'underline', cursor: 'pointer' }}
-            >
+            <PseudoBox className="link">
               <span onClick={this.handleLogout}>Logout</span>
             </PseudoBox>
           </Flex>

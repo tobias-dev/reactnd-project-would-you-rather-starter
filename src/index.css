@@ -11,3 +11,191 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.options {
+  margin: 1em 0;
+}
+
+.main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+  border: solid 1px #ccc;
+  border-radius: 7px;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+.container > div {
+  width: 100%;
+}
+
+.tab-list {
+  width: 100%;
+}
+
+.tab-panel {
+  margin-top: 0.5em;
+}
+
+.tab-panel .question-container {
+  border: solid 1px #ccc;
+  border-radius: 7px;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+.invalid-container svg {
+  width: 3em;
+  height: 3em;
+}
+
+.loaderboard-container {
+  margin-top: -0.5em;
+}
+
+.user-stats-container {
+  width: 100%;
+  border: solid 1px #ccc;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  border-radius: 7px;
+  align-items: center;
+}
+
+.user-stats-container > div {
+  text-align: center;
+}
+
+.user-stats-container > div:first-child {
+  width: 35%;
+}
+
+.user-stats-container > div:last-child {
+  width: 65%;
+}
+
+.user-stats-container .badge {
+  font-size: 1.5em;
+  margin: 0.5em;
+}
+
+.container .avatar {
+  margin-top: 0.2em;
+}
+
+.login-container .header {
+  text-align: center;
+  background-color: #f7fafc;
+  border-radius: 7px;
+  padding: 2em 0;
+}
+
+.login-container .header > div {
+  font-weight: bold;
+}
+
+.login-container .icon {
+  padding: 1em 0 0;
+  margin: 0 auto;
+  size: 4em;
+  width: 4em;
+  height: 4em;
+  font-size: 2em;
+  color: #63b3ed;
+}
+
+.login-container .select-container {
+  padding: 1em 2em 2em;
+}
+
+.nav-container {
+  padding: 1em 0 0.5em;
+  margin-bottom: 2em;
+  color: dimgrey;
+  border-bottom: solid 1px #e2e8f0;
+}
+
+.nav-container > div {
+  flex: 50%;
+}
+
+.nav-container .user {
+  text-align: right;
+}
+
+.nav-container .user > div:first-child {
+  width: 85%;
+}
+
+.nav-container .user > div:last-child {
+  width: 15%;
+}
+
+.new-question-container form {
+  text-align: center;
+}
+
+.new-question-container .header {
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.new-question-container .label {
+  font-weight: bold;
+  margin: 1em 0;
+  text-align: left;
+}
+
+.new-question-container .small {
+  font-size: 0.75em;
+}
+
+.new-question-container button {
+  margin: 1em 0 0;
+}
+
+.question-container > div:first-child {
+  text-align: center;
+  width: 42%;
+}
+
+.question-container > div:last-child {
+  width: 58%;
+}
+
+.question-stats-container .answer-option {
+  margin-top: 0.5em;
+  padding: 0.5em;
+  border: solid 1px #ccc;
+  border-radius: 7px;
+}
+
+.question-stats-container .answer-option.highlighted {
+  background-color: #f7fafc;
+}
+
+.question-stats-container .vote-stats {
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.question-stats-container .vote-stats > div:first-child {
+  padding-right: 1em;
+}

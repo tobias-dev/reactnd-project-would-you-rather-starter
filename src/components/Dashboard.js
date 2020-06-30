@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Flex } from '@chakra-ui/core';
@@ -6,25 +6,17 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Flex } from '@chakra-ui/core';
 class Dashboard extends Component {
   render() {
     return (
-      <Tabs isFitted={true} width="100%" variant="soft-rounded">
+      <Tabs isFitted={true} variant="soft-rounded" className="tab-list">
         <TabList>
           <Tab>Unanswered Questions</Tab>
           <Tab>Answered Questions</Tab>
         </TabList>
         <TabPanels>
           {['unansweredIds', 'answeredIds'].map((key) => (
-            <TabPanel key={key} marginTop="0.5em">
+            <TabPanel key={key} className="tab-panel">
               {this.props[key].length > 0
                 ? this.props[key].map((qid) => (
-                    <Flex
-                      key={qid}
-                      border="solid 1px #ccc"
-                      rounded="7px"
-                      padding="0.5em"
-                      marginTop="0.5em"
-                    >
-                      <Question key={qid} qid={qid} isPreview={true} />
-                    </Flex>
+                    <Question key={qid} qid={qid} isPreview={true} />
                   ))
                 : 'There is currently no question left.'}
             </TabPanel>

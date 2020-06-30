@@ -42,42 +42,26 @@ class NewQuestion extends Component {
     }
 
     return (
-      <Box width="100%">
+      <Box className="new-question-container">
         <form onSubmit={this.handleSubmit}>
-          <Box fontWeight="bold" fontSize="1.5em" textAlign="center">
-            Create New Question
-          </Box>
-          <Box fontWeight="bold" margin="1em 0">
-            Would you rather...
-          </Box>
+          <Box className="header">Create New Question</Box>
+          <Box className="label">Would you rather...</Box>
           <Input
             name="optionOne"
             value={optionOne}
             placeholder="First question"
             onChange={this.handleTextChange}
           />
-          <Box fontWeight="bold" fontSize="0.75em" textAlign="center">
-            OR
-          </Box>
+          <Box className="small">OR</Box>
           <Input
             name="optionTwo"
             value={optionTwo}
             placeholder="Second question"
             onChange={this.handleTextChange}
           />
-          <Box
-            fontWeight="bold"
-            fontSize="0.75em"
-            textAlign="center"
-            margin="1em 0 0"
-          >
-            <Button
-              type="submit"
-              disabled={optionTwo === '' || optionOne === ''}
-            >
-              Submit
-            </Button>
-          </Box>
+          <Button type="submit" disabled={optionTwo === '' || optionOne === ''}>
+            Submit
+          </Button>
         </form>
       </Box>
     );

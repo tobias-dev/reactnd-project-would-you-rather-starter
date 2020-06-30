@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Box, Avatar, Divider } from '@chakra-ui/core';
+import { Box, Flex, Avatar, Divider } from '@chakra-ui/core';
 import QuestionPreview from './QuestionPreview';
 import QuestionForm from './QuestionForm';
 import QuestionStats from './QuestionStats';
@@ -15,18 +15,18 @@ class Question extends Component {
     }
 
     return (
-      <Fragment>
-        <Box textAlign="center" width="42%">
+      <Flex className="question-container">
+        <Box>
           Asked by {author.name}:
           <Avatar
+            className="avatar"
             size="xl"
             name={author.name}
             src={author.avatarURL}
-            marginTop="0.2em"
           />
         </Box>
         <Divider orientation="vertical" />
-        <Box width="58%">
+        <Box>
           {isPreview ? (
             <QuestionPreview qid={qid} />
           ) : isAnswered ? (
@@ -35,7 +35,7 @@ class Question extends Component {
             <QuestionForm qid={qid} />
           )}
         </Box>
-      </Fragment>
+      </Flex>
     );
   }
 }

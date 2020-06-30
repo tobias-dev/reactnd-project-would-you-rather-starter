@@ -10,7 +10,7 @@ class QuestionPreview extends Component {
     return (
       <Fragment>
         <Box fontWeight="bold">Would you rather...</Box>
-        <Box margin="1em 0">
+        <Box className="options">
           {['optionOne', 'optionTwo'].map((option) => (
             <Box key={option}>...{question[option].text}?</Box>
           ))}

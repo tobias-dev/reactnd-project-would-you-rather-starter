@@ -43,7 +43,7 @@ class QuestionForm extends Component {
       <Fragment>
         <Box fontWeight="bold">Would you rather...</Box>
         <form onSubmit={this.handleSubmit}>
-          <RadioGroup margin="1em 0" onChange={this.handleSelectOption}>
+          <RadioGroup className="options" onChange={this.handleSelectOption}>
             {['optionOne', 'optionTwo'].map((option) => (
               <Radio key={option} value={option}>
                 ...{question[option].text}?

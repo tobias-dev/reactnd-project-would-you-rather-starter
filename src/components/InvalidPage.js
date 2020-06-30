@@ -2,8 +2,8 @@ import React from 'react';
 import { Box, Icon } from '@chakra-ui/core';
 
 const InvalidPage = () => (
-  <Box textAlign="center" width="100%">
-    <Icon name="warning" size="3em" />
+  <Box className="invalid-container">
+    <Icon name="warning" />
     <br />
     Page not found.
   </Box>

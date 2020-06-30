@@ -14,31 +14,22 @@ class QuestionStats extends Component {
     const { stats } = this.props;
 
     return (
-      <Box>
-        <Box fontWeight="bold">Results:</Box>
-        <Box padding-top="1em">
+      <Box className="question-stats-container">
+        <Box className="bold">Results:</Box>
+        <Box>
           {['optionOne', 'optionTwo'].map((option) => {
             const { totalVotes, userAnswer } = stats;
             const { text, votes, percentage } = stats[option];
             const isAnswer = userAnswer === option;
             return (
               <Box
+                className={`answer-option ${isAnswer ? 'highlighted' : ''}`}
                 key={option}
-                marginTop="0.5em"
-                padding="0.5em"
-                border="solid 1px #ccc"
-                rounded="7px"
-                backgroundColor={isAnswer ? '#F7FAFC' : ''}
               >
                 {isAnswer && <Badge>Your Choice</Badge>}
                 Would you rather {text}?
-                <Flex
-                  fontWeight="bold"
-                  alignItems="center"
-                  justifyContent="center"
-                  marginTop="0.5em"
-                >
-                  <Box paddingRight="1em">
+                <Flex className="vote-stats">
+                  <Box>
                     {votes} of {totalVotes} votes
                   </Box>
                   <Box>
