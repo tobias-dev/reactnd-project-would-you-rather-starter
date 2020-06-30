@@ -26,8 +26,8 @@ class QuestionStats extends Component {
                 className={`answer-option ${isAnswer ? 'highlighted' : ''}`}
                 key={option}
               >
-                {isAnswer && <Badge>Your Choice</Badge>}
-                Would you rather {text}?
+                {isAnswer && <Badge>Your Choice</Badge>} Would you rather {text}
+                ?
                 <Flex className="vote-stats">
                   <Box>
                     {votes} of {totalVotes} votes
