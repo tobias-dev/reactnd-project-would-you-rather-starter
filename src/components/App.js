@@ -21,7 +21,6 @@ class App extends Component {
       <ThemeProvider>
         <CSSReset />
         <Box className="main">
-          <CSSReset />
           <LoadingBar />
           <Nav />
           <Flex className="container">

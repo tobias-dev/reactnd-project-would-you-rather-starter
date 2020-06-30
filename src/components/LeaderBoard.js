@@ -8,7 +8,7 @@ class LeaderBoard extends Component {
     const { stats } = this.props;
 
     return (
-      <Box className="loaderboard-container">
+      <Box className="leaderboard-container">
         {stats.map((userStats) => {
           const { id, name, avatarURL, created, answered, score } = userStats;
           return (
