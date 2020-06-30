@@ -1,3 +1,5 @@
+# Would You Rather App
+
 This is a simple _Would you rather_ app. You can
 
 - login with a list of existing users,
