@@ -7,58 +7,49 @@ import {
   CircularProgress,
   CircularProgressLabel,
 } from '@chakra-ui/core';
+import { getQuestionStats } from '../utils/helper';
 
 class QuestionStats extends Component {
   render() {
-    const { question, authedUser } = this.props;
-    const optionOneCount = question.optionOne.votes.length;
-    const optionTwoCount = question.optionTwo.votes.length;
-    const allCount = optionOneCount + optionTwoCount;
-    const optionCount = {
-      optionOne: optionOneCount,
-      optionTwo: optionTwoCount,
-    };
-    const optionPercentage = {
-      optionOne: (optionOneCount * 100) / allCount,
-      optionTwo: (optionTwoCount * 100) / allCount,
-    };
+    const { stats } = this.props;
 
     return (
       <Box>
         <Box fontWeight="bold">Results:</Box>
         <Box padding-top="1em">
-          {['optionOne', 'optionTwo'].map((option) => (
-            <Box
-              key={option}
-              marginTop="0.5em"
-              padding="0.5em"
-              border="solid 1px #ccc"
-              rounded="7px"
-              backgroundColor={
-                question[option].votes.includes(authedUser) ? '#F7FAFC' : ''
-              }
-            >
-              {question[option].votes.includes(authedUser) && (
-                <Badge>Your Choice</Badge>
-              )}{' '}
-              Would you rather {question[option].text}?
-              <Flex
-                fontWeight="bold"
-                alignItems="center"
-                justifyContent="center"
+          {['optionOne', 'optionTwo'].map((option) => {
+            const { totalVotes, userAnswer } = stats;
+            const { text, votes, percentage } = stats[option];
+            const isAnswer = userAnswer === option;
+            return (
+              <Box
+                key={option}
                 marginTop="0.5em"
+                padding="0.5em"
+                border="solid 1px #ccc"
+                rounded="7px"
+                backgroundColor={isAnswer ? '#F7FAFC' : ''}
               >
-                <Box paddingRight="1em">{`${optionCount[option]} of ${allCount} votes`}</Box>
-                <Box>
-                  <CircularProgress value={optionPercentage[option]}>
-                    <CircularProgressLabel>{`${parseInt(
-                      optionPercentage[option]
-                    )}%`}</CircularProgressLabel>
-                  </CircularProgress>
-                </Box>
-              </Flex>
-            </Box>
-          ))}
+                {isAnswer && <Badge>Your Choice</Badge>}
+                Would you rather {text}?
+                <Flex
+                  fontWeight="bold"
+                  alignItems="center"
+                  justifyContent="center"
+                  marginTop="0.5em"
+                >
+                  <Box paddingRight="1em">
+                    {votes} of {totalVotes} votes
+                  </Box>
+                  <Box>
+                    <CircularProgress value={percentage}>
+                      <CircularProgressLabel>{`${percentage}%`}</CircularProgressLabel>
+                    </CircularProgress>
+                  </Box>
+                </Flex>
+              </Box>
+            );
+          })}
         </Box>
       </Box>
     );
@@ -67,8 +58,7 @@ class QuestionStats extends Component {
 
 function mapStateToProps({ authedUser, questions }, { qid }) {
   return {
-    authedUser,
-    question: questions[qid],
+    stats: getQuestionStats(questions[qid], authedUser),
   };
 }
 
