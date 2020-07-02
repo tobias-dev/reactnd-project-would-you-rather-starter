@@ -11,6 +11,5 @@ export function setUser(userId) {
 export function unsetUser() {
   return {
     type: UNSET_USER,
-    id: null,
   };
 }
