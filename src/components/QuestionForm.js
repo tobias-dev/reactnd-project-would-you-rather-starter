@@ -1,13 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { Box, Button, RadioGroup, Radio } from '@chakra-ui/core';
 import { handleAddQuestionAnswer } from '../actions/questions';
 
 class QuestionForm extends Component {
   state = {
     selectedOption: null,
-    hasBeenSubmitted: false,
   };
 
   handleSelectOption = (e) => {
@@ -24,19 +22,11 @@ class QuestionForm extends Component {
     const { selectedOption } = this.state;
 
     dispatch(handleAddQuestionAnswer(question, selectedOption));
-
-    this.setState(() => ({
-      hasBeenSubmitted: true,
-    }));
   };
 
   render() {
     const { question } = this.props;
-    const { selectedOption, hasBeenSubmitted } = this.state;
-
-    if (hasBeenSubmitted === true) {
-      return <Redirect to={`/poll/${question.id}`} />;
-    }
+    const { selectedOption } = this.state;
 
     return (
       <Fragment>
